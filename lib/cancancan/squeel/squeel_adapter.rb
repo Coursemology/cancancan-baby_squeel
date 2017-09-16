@@ -55,7 +55,7 @@ class CanCanCan::Squeel::SqueelAdapter < CanCan::ModelAdapters::AbstractAdapter
     join_list = nil
 
     scope = relation.where.has do
-      expression, join_list = CanCanCan::Squeel::ExpressionBuilder.build(self, klass, :==, value)
+      expression, join_list = CanCanCan::Squeel::ExpressionBuilder.build(self, klass, :eq, value)
       expression
     end
 
@@ -151,7 +151,7 @@ class CanCanCan::Squeel::SqueelAdapter < CanCan::ModelAdapters::AbstractAdapter
     if rule.conditions.empty?
       [rule.base_behavior ? ALWAYS_TRUE : ALWAYS_FALSE, []]
     else
-      comparator = rule.base_behavior ? :== : :!=
+      comparator = rule.base_behavior ? :eq : :not_eq
       CanCanCan::Squeel::ExpressionBuilder.build(squeel, @model_class, comparator, rule.conditions)
     end
   end

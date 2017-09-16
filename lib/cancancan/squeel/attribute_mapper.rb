@@ -24,9 +24,9 @@ module CanCanCan::Squeel::AttributeMapper
   # returned.
   #
   # @example Attribute Ranges
-  #   squeel_comparison_for(User, :id, :==, 1..5) #=> [:&, [[:id, :>=, 1], [:id, :<=, 5]]]
+  #   squeel_comparison_for(User, :id, :eq, 1..5) #=> [:&, [[:id, :gteq, 1], [:id, :lteq, 5]]]
   # @example Association Objects
-  #   squeel_comparison_for(Post, :comment, :==, comment) #=> [:&, [[:comment_id, :==, 1]]]
+  #   squeel_comparison_for(Post, :comment, :eq, comment) #=> [:&, [[:comment_id, :eq, 1]]]
   #
   # @param [Class] model_class The model class which the key references.
   # @param [Symbol] key The column being compared.
@@ -84,8 +84,8 @@ module CanCanCan::Squeel::AttributeMapper
   #   each with the comparator to use, and the value to compare against.
   def comparator_for_array(comparator, value)
     case comparator
-    when :== then [:&, [[:>>, value]]]
-    when :!= then [:&, [[:<<, value]]]
+    when :eq then [:&, [[:in, value]]]
+    when :not_eq then [:&, [[:not_in, value]]]
     end
   end
 
@@ -111,8 +111,8 @@ module CanCanCan::Squeel::AttributeMapper
   #   to use, and the value to compare against.
   def comparator_for_exclusive_range(comparator, value)
     case comparator
-    when :== then [:&, [[:>=, value.first], [:<, value.last]]]
-    when :!= then [:|, [[:<, value.first], [:>=, value.last]]]
+    when :eq then [:&, [[:gteq, value.first], [:<, value.last]]]
+    when :not_eq then [:|, [[:<, value.first], [:gteq, value.last]]]
     end
   end
 
@@ -124,8 +124,8 @@ module CanCanCan::Squeel::AttributeMapper
   #   to use, and the value to compare against.
   def comparator_for_inclusive_range(comparator, value)
     case comparator
-    when :== then [:&, [[:>=, value.first], [:<=, value.last]]]
-    when :!= then [:|, [[:<, value.first], [:>, value.last]]]
+    when :eq then [:&, [[:gteq, value.first], [:lteq, value.last]]]
+    when :not_eq then [:|, [[:<, value.first], [:>, value.last]]]
     end
   end
 end
