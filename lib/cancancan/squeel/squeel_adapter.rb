@@ -54,7 +54,7 @@ class CanCanCan::Squeel::SqueelAdapter < CanCan::ModelAdapters::AbstractAdapter
     klass = subject.class.reflect_on_association(name).klass
     join_list = nil
 
-    scope = relation.where do
+    scope = relation.where.has do
       expression, join_list = CanCanCan::Squeel::ExpressionBuilder.build(self, klass, :==, value)
       expression
     end
@@ -76,7 +76,7 @@ class CanCanCan::Squeel::SqueelAdapter < CanCan::ModelAdapters::AbstractAdapter
   # @return [ActiveRecord::Relation] The built relation.
   def self.add_joins_to_scope(scope, joins, join_type = :outer)
     joins.reduce(scope) do |result, join|
-      result.joins do
+      result.joining do
         join.reduce(self) do |relation, association|
           relation = relation.__send__(association)
           relation = relation.__send__(join_type) unless join_type == :inner
@@ -96,7 +96,7 @@ class CanCanCan::Squeel::SqueelAdapter < CanCan::ModelAdapters::AbstractAdapter
   def relation
     adapter = self
     join_list = nil
-    scope = @model_class.where(nil).where do
+    scope = @model_class.where(nil).where.has do
       expression, join_list = adapter.send(:build_accessible_by_expression, self)
       expression
     end
