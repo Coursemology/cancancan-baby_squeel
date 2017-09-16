@@ -134,8 +134,7 @@ class CanCanCan::Squeel::SqueelAdapter < CanCan::ModelAdapters::AbstractAdapter
   #   expression, as well as an array of joins which the Squeel expression must be joined to.
   def combine_expression_with_rule(squeel, left_expression, joins, rule)
     right_expression, right_expression_joins = build_expression_from_rule(squeel, rule)
-
-    operator = rule.base_behavior ? :| : :&
+    operator = rule.base_behavior ? :or : :and
     combine_squeel_expressions(left_expression, joins, operator, right_expression,
                                right_expression_joins)
   end

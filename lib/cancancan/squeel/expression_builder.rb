@@ -35,7 +35,7 @@ module CanCanCan::Squeel::ExpressionBuilder
       comparison_node, node_joins = build_comparison_node(root ? node : node.dup, model_class,
                                                           key, comparator, value)
       if left_expression
-        [left_expression & comparison_node, joins.concat(node_joins)]
+        [left_expression.and(comparison_node), joins.concat(node_joins)]
       else
         [comparison_node, node_joins]
       end

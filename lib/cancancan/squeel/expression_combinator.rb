@@ -12,7 +12,7 @@ module CanCanCan::Squeel::ExpressionCombinator
   # @param [Squeel::Nodes::Node] left_expression The left expression.
   # @param [Array] left_expression_joins An array of joins which the Squeel expression must be
   #   joined to.
-  # @param [Symbol] operator The operator to combine with. This must be either +:&+ or +:|+.
+  # @param [Symbol] operator The operator to combine with. This must be either +:and+ or +:or+.
   # @param [Squeel::Nodes::Node] right_expression The right expression.
   # @param [Array] right_expression_joins An array of joins which the Squeel expression must be
   #   joined to.
@@ -21,12 +21,12 @@ module CanCanCan::Squeel::ExpressionCombinator
   def combine_squeel_expressions(left_expression, left_expression_joins, operator,
                                  right_expression, right_expression_joins)
     case operator
-    when :& then conjunction_expressions(left_expression, left_expression_joins,
+    when :and then conjunction_expressions(left_expression, left_expression_joins,
                                          right_expression, right_expression_joins)
-    when :| then disjunction_expressions(left_expression, left_expression_joins,
+    when :or then disjunction_expressions(left_expression, left_expression_joins,
                                          right_expression, right_expression_joins)
     else
-      raise ArgumentError, "#{operator} must either be :& or :|"
+      raise ArgumentError, "#{operator} must either be :and or :or"
     end
   end
 
@@ -50,7 +50,7 @@ module CanCanCan::Squeel::ExpressionCombinator
     elsif right_expression == ALWAYS_TRUE
       [left_expression, left_expression_joins]
     else
-      [left_expression & right_expression, left_expression_joins + right_expression_joins]
+      [left_expression.and(right_expression), left_expression_joins + right_expression_joins]
     end
   end
 
@@ -74,7 +74,7 @@ module CanCanCan::Squeel::ExpressionCombinator
     elsif right_expression == ALWAYS_FALSE
       [left_expression, left_expression_joins]
     else
-      [left_expression | right_expression, left_expression_joins + right_expression_joins]
+      [left_expression.or(right_expression), left_expression_joins + right_expression_joins]
     end
   end
 end
