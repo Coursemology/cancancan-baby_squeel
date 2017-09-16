@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'active_record'
 require 'cancancan'
-require 'squeel'
+require 'baby_squeel'
 
 require 'cancancan/squeel/version'
 require 'cancancan/squeel/active_record_disabler'
