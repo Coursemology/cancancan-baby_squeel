@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 require 'spec_helper'
 
-RSpec.describe CanCanCan::Squeel do
+RSpec.describe CanCanCan::BabySqueel do
   it 'has a version number' do
-    expect(CanCanCan::Squeel::VERSION).not_to be nil
+    expect(CanCanCan::BabySqueel::VERSION).not_to be nil
   end
 
   let(:ability) { double.extend(CanCan::Ability) }

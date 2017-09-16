@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-module CanCanCan::Squeel::ExpressionCombinator
+module CanCanCan::BabySqueel::ExpressionCombinator
   # This true expression is used to indicate a condition that is always satisfied.
   ALWAYS_TRUE = Arel::Nodes::SqlLiteral.new('1=1').freeze
 

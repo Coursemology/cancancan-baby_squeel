@@ -3,7 +3,7 @@
 #
 # This is used by building a set of rules for retrieving all accessible records, as well as for
 # building queries instead of loading all records into memory.
-module CanCanCan::Squeel::ExpressionBuilder
+module CanCanCan::BabySqueel::ExpressionBuilder
   module_function
 
   # Builds a new Squeel expression node given a model class, the comparator, and the conditions.
@@ -79,7 +79,7 @@ module CanCanCan::Squeel::ExpressionBuilder
   # @param [Symbol] comparator The comparator to compare the column against the value.
   # @param value The value to compare the column against.
   def build_scalar_comparison_node(node, model_class, key, comparator, value)
-    combinator, comparisons = CanCanCan::Squeel::AttributeMapper.
+    combinator, comparisons = CanCanCan::BabySqueel::AttributeMapper.
                               squeel_comparison_for(model_class, key, comparator, value)
     attribute = node.__send__(comparisons.first.first)
 

@@ -1,9 +1,9 @@
 # frozen_string_literal: true
-class CanCanCan::Squeel::SqueelAdapter < CanCan::ModelAdapters::AbstractAdapter
-  include CanCanCan::Squeel::ExpressionCombinator
+class CanCanCan::BabySqueel::BabySqueelAdapter < CanCan::ModelAdapters::AbstractAdapter
+  include CanCanCan::BabySqueel::ExpressionCombinator
 
-  ALWAYS_TRUE = CanCanCan::Squeel::ExpressionCombinator::ALWAYS_TRUE
-  ALWAYS_FALSE = CanCanCan::Squeel::ExpressionCombinator::ALWAYS_FALSE
+  ALWAYS_TRUE = CanCanCan::BabySqueel::ExpressionCombinator::ALWAYS_TRUE
+  ALWAYS_FALSE = CanCanCan::BabySqueel::ExpressionCombinator::ALWAYS_FALSE
 
   def self.for_class?(model_class)
     model_class <= ActiveRecord::Base
@@ -55,7 +55,7 @@ class CanCanCan::Squeel::SqueelAdapter < CanCan::ModelAdapters::AbstractAdapter
     join_list = nil
 
     scope = relation.where.has do
-      expression, join_list = CanCanCan::Squeel::ExpressionBuilder.build(self, klass, :eq, value)
+      expression, join_list = CanCanCan::BabySqueel::ExpressionBuilder.build(self, klass, :eq, value)
       expression
     end
 
@@ -104,7 +104,7 @@ class CanCanCan::Squeel::SqueelAdapter < CanCan::ModelAdapters::AbstractAdapter
     add_joins_to_scope(scope, join_list)
   end
 
-  # @see CanCanCan::Squeel::SqueelAdapter.add_joins_to_scope
+  # @see CanCanCan::BabySqueel::BabySqueelAdapter.add_joins_to_scope
   def add_joins_to_scope(*args)
     self.class.send(:add_joins_to_scope, *args)
   end
@@ -151,7 +151,7 @@ class CanCanCan::Squeel::SqueelAdapter < CanCan::ModelAdapters::AbstractAdapter
       [rule.base_behavior ? ALWAYS_TRUE : ALWAYS_FALSE, []]
     else
       comparator = rule.base_behavior ? :eq : :not_eq
-      CanCanCan::Squeel::ExpressionBuilder.build(squeel, @model_class, comparator, rule.conditions)
+      CanCanCan::BabySqueel::ExpressionBuilder.build(squeel, @model_class, comparator, rule.conditions)
     end
   end
 end

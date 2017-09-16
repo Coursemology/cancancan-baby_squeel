@@ -5,7 +5,7 @@
 # This implements:
 #  - comparing values against an array: interpreted as any value for ==, none of the values for !=.
 #  - mapping foreign keys to IDs
-module CanCanCan::Squeel::AttributeMapper
+module CanCanCan::BabySqueel::AttributeMapper
   module_function
 
   # Picks the appropriate column, comparator, and value to use in the Squeel expression.

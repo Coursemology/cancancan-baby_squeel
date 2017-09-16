@@ -19,7 +19,7 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'coverage_helper'
-require 'cancancan/squeel'
+require 'cancancan/baby_squeel'
 Dir["#{__dir__}/support/*.rb"].each { |f| require f }
 
 RSpec.configure do |config|

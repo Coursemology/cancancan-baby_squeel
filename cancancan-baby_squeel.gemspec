@@ -1,18 +1,18 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'cancancan/squeel/version'
+require 'cancancan/baby_squeel/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'cancancan-squeel'
-  spec.version       = CanCanCan::Squeel::VERSION
+  spec.name          = 'cancancan-baby_squeel'
+  spec.version       = CanCanCan::BabySqueel::VERSION
   spec.authors       = ['Joel Low']
   spec.email         = ['joel@joelsplace.sg']
   spec.license       = 'MIT'
 
-  spec.summary       = 'Squeel database adapter for CanCanCan.'
+  spec.summary       = 'BabySqueel database adapter for CanCanCan.'
   spec.description   = "Implements CanCanCan's rule-based record fetching using Squeel."
-  spec.homepage      = 'https://github.com/lowjoel/cancancan-squeel'
+  spec.homepage      = 'https://github.com/jeremyyap/cancancan-baby_squeel'
 
   spec.files         = `git ls-files -z`.split("\x0").
                        reject { |f| f.match(/^(test|spec|features)\//) }
