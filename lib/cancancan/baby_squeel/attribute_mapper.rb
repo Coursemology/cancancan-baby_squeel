@@ -53,6 +53,7 @@ module CanCanCan::BabySqueel::AttributeMapper
   def map_association(model_class, key, value)
     if (association = model_class.reflect_on_association(key))
       key = association.foreign_key
+      value = value.id
     end
 
     [key, value]
