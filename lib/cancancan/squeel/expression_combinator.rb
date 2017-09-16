@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 module CanCanCan::Squeel::ExpressionCombinator
   # This true expression is used to indicate a condition that is always satisfied.
-  ALWAYS_TRUE = Squeel::Nodes::Predicate.new(Squeel::Nodes::Literal.new('1'), :eq, 1).freeze
+  ALWAYS_TRUE = Arel::Nodes::SqlLiteral.new('1=1').freeze
 
   # This true expression is used to indicate a condition that is never satisfied.
-  ALWAYS_FALSE = Squeel::Nodes::Predicate.new(Squeel::Nodes::Literal.new('1'), :eq, 0).freeze
+  ALWAYS_FALSE = Arel::Nodes::SqlLiteral.new('1=0').freeze
 
   # Combines two Squeel expressions. This is aware of the +ALWAYS_TRUE+ and +ALWAYS_FALSE+
   # constants and performs simplification.
