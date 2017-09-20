@@ -135,8 +135,18 @@ class CanCanCan::BabySqueel::BabySqueelAdapter < CanCan::ModelAdapters::Abstract
   def combine_expression_with_rule(squeel, left_expression, joins, rule)
     right_expression, right_expression_joins = build_expression_from_rule(squeel, rule)
     operator = rule.base_behavior ? :or : :and
-    combine_squeel_expressions(left_expression, joins, operator, right_expression,
-                               right_expression_joins)
+
+    expression, joins = combine_squeel_expressions(left_expression, joins, operator, right_expression,
+                                                   right_expression_joins)
+
+    joined_scope = @model_class.where(nil).where.has do
+      expression
+    end
+    joined_scope = add_joins_to_scope(joined_scope, joins)
+
+    squeel._scope = joined_scope
+
+    [expression, joins]
   end
 
   # Builds a Squeel expression representing the rule's conditions.
