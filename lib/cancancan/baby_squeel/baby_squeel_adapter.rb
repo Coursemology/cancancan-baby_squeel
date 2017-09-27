@@ -139,13 +139,7 @@ class CanCanCan::BabySqueel::BabySqueelAdapter < CanCan::ModelAdapters::Abstract
     expression, joins = combine_squeel_expressions(left_expression, joins, operator, right_expression,
                                                    right_expression_joins)
 
-    joined_scope = @model_class.where(nil).where.has do
-      expression
-    end
-    joined_scope = add_joins_to_scope(joined_scope, joins)
-
-    squeel._scope = joined_scope
-
+    squeel._scope = add_joins_to_scope(squeel._scope, joins)
     [expression, joins]
   end
 

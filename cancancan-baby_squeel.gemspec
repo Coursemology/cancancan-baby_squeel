@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.license       = 'MIT'
 
   spec.summary       = 'BabySqueel database adapter for CanCanCan.'
-  spec.description   = "Implements CanCanCan's rule-based record fetching using Squeel."
+  spec.description   = "Implements CanCanCan's rule-based record fetching using BabySqueel."
   spec.homepage      = 'https://github.com/jeremyyap/cancancan-baby_squeel'
 
   spec.files         = `git ls-files -z`.split("\x0").
@@ -30,6 +30,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'sqlite3'
 
   spec.add_dependency 'activerecord', '>= 4.1'
-  spec.add_dependency 'cancancan', '~> 1.10'
+  spec.add_dependency 'cancancan', '>= 1.10'
   spec.add_dependency 'baby_squeel', '~> 1.1.5'
 end
