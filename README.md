@@ -1,4 +1,6 @@
 # CanCanCan-BabySqueel
+[![Build Status](https://travis-ci.org/Coursemology/cancancan-baby_squeel.svg?branch=master)](https://travis-ci.org/Coursemology/cancancan-baby_squeel)
+[![Coverage Status](https://coveralls.io/repos/github/Coursemology/cancancan-baby_squeel/badge.svg?branch=master)](https://coveralls.io/github/Coursemology/cancancan-baby_squeel?branch=master)
 
 This is an adapter for the [CanCanCan](https://github.com/CanCanCommunity/cancancan) authorisation
 library to automatically generate SQL queries from ability rules.
