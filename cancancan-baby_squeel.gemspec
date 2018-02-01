@@ -6,8 +6,8 @@ require 'cancancan/baby_squeel/version'
 Gem::Specification.new do |spec|
   spec.name          = 'cancancan-baby_squeel'
   spec.version       = CanCanCan::BabySqueel::VERSION
-  spec.authors       = ['Joel Low']
-  spec.email         = ['joel@joelsplace.sg']
+  spec.authors       = ['Jeremy Yap']
+  spec.email         = ['jeremy.yapjl@gmail.com']
   spec.license       = 'MIT'
 
   spec.summary       = 'BabySqueel database adapter for CanCanCan.'
@@ -25,7 +25,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'simplecov'
   spec.add_development_dependency 'coveralls'
-  spec.add_development_dependency 'codeclimate-test-reporter'
 
   spec.add_development_dependency 'sqlite3'
 
