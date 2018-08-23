@@ -5,4 +5,11 @@ class CanCanCan::BabySqueel::ActiveRecordDisabler
       false
     end
   end
+  if defined?(::CanCan::ModelAdapters::ActiveRecord5Adapter)
+    ::CanCan::ModelAdapters::ActiveRecord5Adapter.class_eval do
+      def self.for_class?(_)
+        false
+      end
+    end
+  end
 end
