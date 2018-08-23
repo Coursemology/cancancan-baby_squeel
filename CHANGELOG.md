@@ -1,5 +1,9 @@
 ## master
 
+## 0.2.0
+
+Add support for CanCanCan 2.2
+
 ## 0.1.0
 
 Initial release -
