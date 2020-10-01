@@ -14,3 +14,8 @@
 
 # Ignore RSpec state
 /spec/examples.txt
+.idea/vcs.xml
+.idea/modules.xml
+.idea/misc.xml
+.idea/inspectionProfiles/Project_Default.xml
+.idea/cancancan-baby_squeel.iml

@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'sqlite3'
 
-  spec.add_dependency 'activerecord', '>= 4.1', '< 5.2.1'
+  spec.add_dependency 'activerecord', '>= 4.1'
   spec.add_dependency 'cancancan', '>= 1.10'
   spec.add_dependency 'baby_squeel', '>= 1.1.5'
 end
